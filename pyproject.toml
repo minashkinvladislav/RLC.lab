@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rlcfreq"
+version = "1.0.0"
+description = "RLC circuits as ODE models in the frequency domain: symbolic models, graphs, fitting, time-domain solvers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "sympy>=1.12",
+  "mpmath>=1.3",
+  "networkx>=3.1",
+  "matplotlib>=3.8",
+  "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+cma = ["cma>=3.3"]
+test = ["pytest>=7"]
+notebook = ["jupyter", "nbconvert", "ipykernel"]
+
+[tool.setuptools]
+packages = ["rlcfreq"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: tests that download data over HTTP (opt-in, RLCFREQ_NETWORK=1)"]
+filterwarnings = ["ignore::DeprecationWarning"]
